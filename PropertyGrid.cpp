@@ -2060,12 +2060,14 @@ void CPropertyGrid::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
 
 BOOL CPropertyGrid::OnMouseWheel(UINT nFlags, short zDelta, CPoint pt)
 {
-  int steps = abs(zDelta)/WHEEL_DELTA;
+  /*int steps = abs(zDelta)/WHEEL_DELTA;
   for (int i=0; i<3*steps; i++)
   {
     if (zDelta>0) OnVScroll(SB_LINEUP, 0, &m_scrollbar);
     if (zDelta<0) OnVScroll(SB_LINEDOWN, 0, &m_scrollbar);
-  }
+  }*/
+  if (zDelta>0) OnVScroll(SB_LINEUP, 0, &m_scrollbar);
+  if (zDelta<0) OnVScroll(SB_LINEDOWN, 0, &m_scrollbar);
 
   return CWnd::OnMouseWheel(nFlags, zDelta, pt);
 }
