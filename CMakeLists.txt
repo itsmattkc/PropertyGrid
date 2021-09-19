@@ -5,7 +5,7 @@ project(PropertyGrid LANGUAGES CXX)
 set(CMAKE_MFC_FLAG 2)
 add_compile_definitions(_AFXDLL)
 
-option(BUILD_APP "Build with test application" ON)
+option(PROPERTYGRID_BUILD_APP "Build with test application" ON)
 
 add_library(PropertyGrid STATIC
   CustomItem.h
