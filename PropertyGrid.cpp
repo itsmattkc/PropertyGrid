@@ -895,12 +895,13 @@ void CPropertyGrid::OnSize(UINT nType, int cx, int cy)
 {
   CWnd::OnSize(nType, cx, cy);
 
+  RecalcLayout();
+
   if (m_scrollbar.GetSafeHwnd())
   {
     CRect rect;
     GetClientRect(&rect);
     m_scrollbar.MoveWindow(rect.right - GetSystemMetrics(SM_CXVSCROLL), rect.top, GetSystemMetrics(SM_CXVSCROLL), rect.Height());
-    RecalcLayout();
   }
 }
 
