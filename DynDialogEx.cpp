@@ -1,16 +1,16 @@
 // DynDialogItemEx.cpp: implementation of the CDynDialogItemEx class.
 //
-// Written by Marcel Scherpenisse 
+// Written by Marcel Scherpenisse
 //        mailto:Marcel_Scherpenisse@insad.nl
 //
 // This code may be used in compiled form in any way you desire. This
-// file may be redistributed unmodified by any means PROVIDING it is 
-// not sold for profit without the authors written consent, and 
-// providing that this notice and the authors name and all copyright 
-// notices remains intact. If the source code in this file is used in 
-// any commercial application then a statement along the lines of 
-// "Portions copyright (c) Marcel Scherpenisse, 2002" must be included in 
-// the startup banner, "About" box or printed documentation. An email 
+// file may be redistributed unmodified by any means PROVIDING it is
+// not sold for profit without the authors written consent, and
+// providing that this notice and the authors name and all copyright
+// notices remains intact. If the source code in this file is used in
+// any commercial application then a statement along the lines of
+// "Portions copyright (c) Marcel Scherpenisse, 2002" must be included in
+// the startup banner, "About" box or printed documentation. An email
 // letting me know that you are using it would be nice as well.
 //
 // This file is provided "as is" with no expressed or implied warranty.
@@ -63,7 +63,7 @@ CDynDialogEx::CDynDialogEx(CWnd* pParent /*=NULL*/)
 CDynDialogEx::~CDynDialogEx()
 {
   CDynDialogItemEx *pDynDialogItemEx = NULL;
-  for (INT_PTR i = m_arrDlgItemPtr.GetSize() - 1; i >= 0; i--) {
+  for (INT_PTR i = m_arrDlgItemPtr.size() - 1; i >= 0; i--) {
     pDynDialogItemEx = m_arrDlgItemPtr[i];
     if (pDynDialogItemEx != NULL) {
       delete pDynDialogItemEx;
@@ -99,7 +99,7 @@ void CDynDialogEx::DoDataExchange(CDataExchange* pDX)
   //}}AFX_DATA_MAP
 
   CDynDialogItemEx *pDynDialogItemEx = NULL;
-  for (INT_PTR i = m_arrDlgItemPtr.GetSize() - 1; i >= 0; i--) {
+  for (INT_PTR i = m_arrDlgItemPtr.size() - 1; i >= 0; i--) {
     pDynDialogItemEx = m_arrDlgItemPtr[i];
     if (pDynDialogItemEx != NULL) {
       pDynDialogItemEx->DoDataExchange(pDX);
@@ -119,7 +119,7 @@ END_MESSAGE_MAP()
 /////////////////////////////////////////////////////////////////////////////
 // CDynDialogEx message handlers
 
-int CDynDialogEx::OnCreate(LPCREATESTRUCT lpCreateStruct) 
+int CDynDialogEx::OnCreate(LPCREATESTRUCT lpCreateStruct)
 {
   if (CDialog::OnCreate(lpCreateStruct) == -1)
     return -1;
@@ -141,7 +141,7 @@ int CDynDialogEx::OnCreate(LPCREATESTRUCT lpCreateStruct)
 
   //Create all the controls on the dialog
   CDynDialogItemEx *pDynDialogItemEx = NULL;
-  for (int i = 0; i < m_arrDlgItemPtr.GetSize(); i++) {
+  for (int i = 0; i < m_arrDlgItemPtr.size(); i++) {
     pDynDialogItemEx = m_arrDlgItemPtr[i];
     if (pDynDialogItemEx != NULL) {
       if (!pDynDialogItemEx->IsDlgItemSubclassed()) {
@@ -158,11 +158,11 @@ int CDynDialogEx::OnCreate(LPCREATESTRUCT lpCreateStruct)
   return 0;
 }
 
-BOOL CDynDialogEx::OnInitDialog() 
+BOOL CDynDialogEx::OnInitDialog()
 {
   //Reposition all the controls on the dialog...
   CDynDialogItemEx *pDynDialogItemEx = NULL;
-  for (int i = 0; i < m_arrDlgItemPtr.GetSize(); i++) {
+  for (int i = 0; i < m_arrDlgItemPtr.size(); i++) {
     pDynDialogItemEx = m_arrDlgItemPtr[i];
     if (pDynDialogItemEx != NULL) {
       if (!pDynDialogItemEx->IsDlgItemSubclassed() && !pDynDialogItemEx->SetWindowPos(this)) {
@@ -181,7 +181,7 @@ BOOL CDynDialogEx::OnInitDialog()
   // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-INT_PTR CDynDialogEx::DoModal() 
+int CDynDialogEx::DoModal()
 {
   //Do we need OK and Cancel buttons??
   if (m_bAddSystemButtons) {
@@ -246,7 +246,7 @@ INT_PTR CDynDialogEx::DoModal()
     nBufferSize = (nBufferSize + 3) & ~3;  // adjust size to make first control DWORD aligned
 
     CDynDialogItemEx *pDynDialogItemEx = NULL;
-    for (int i = 0; i < m_arrDlgItemPtr.GetSize(); i++) {
+    for (int i = 0; i < m_arrDlgItemPtr.size(); i++) {
       pDynDialogItemEx = m_arrDlgItemPtr[i];
       if (pDynDialogItemEx != NULL) {
         if (pDynDialogItemEx->IsDlgItemSubclassed()) {
@@ -289,7 +289,7 @@ INT_PTR CDynDialogEx::DoModal()
     // will now transfer the information for each one of subclassed controls...
     if (m_DialogTemplate.cdit > 0) {
       CDynDialogItemEx *pDynDialogItemEx = NULL;
-      for (int i = 0; i < m_arrDlgItemPtr.GetSize(); i++) {
+      for (int i = 0; i < m_arrDlgItemPtr.size(); i++) {
         pDynDialogItemEx = m_arrDlgItemPtr[i];
         if (pDynDialogItemEx != NULL) {
           if (pDynDialogItemEx->IsDlgItemSubclassed()) {
@@ -307,7 +307,7 @@ INT_PTR CDynDialogEx::DoModal()
 
     //These are the MFC functions, which do the job...
     if (m_bModelessDlg) {
-      iRet = CreateIndirect((LPDLGTEMPLATE)pBuffer, m_pParentWnd);		
+      iRet = CreateIndirect((LPDLGTEMPLATE)pBuffer, m_pParentWnd);
     }
     else {
       InitModalIndirect((LPDLGTEMPLATE)pBuffer, m_pParentWnd);
@@ -421,7 +421,7 @@ UINT CDynDialogEx::AddDlgControl(DLGITEMTEMPLATECONTROLS TypeControl,
   CDynDialogItemEx *pDynDialogItemEx = new CDynDialogItemEx;
   if (pDynDialogItemEx != NULL) {
     nRet = pDynDialogItemEx->InitDialogItem(TypeControl, dwStyle, dwExtendedStyle, pRect, lpszCaption, nID, FALSE, pData);
-    m_arrDlgItemPtr.Add(pDynDialogItemEx);
+    m_arrDlgItemPtr.push_back(pDynDialogItemEx);
   }
 
   //Return ID of Control we created.
@@ -458,7 +458,7 @@ UINT CDynDialogEx::AddDlgControl(LPCSTR lpszClassName,
   CDynDialogItemEx *pDynDialogItemEx = new CDynDialogItemEx;
   if (pDynDialogItemEx != NULL) {
     nRet = pDynDialogItemEx->InitDialogItem(lpszClassName, dwStyle, dwExtendedStyle, pRect, lpszCaption, nID, FALSE, pData);
-    m_arrDlgItemPtr.Add(pDynDialogItemEx);
+    m_arrDlgItemPtr.push_back(pDynDialogItemEx);
   }
 
   //Return ID of Control we created.
@@ -494,7 +494,7 @@ UINT CDynDialogEx::AddSubclassedDlgControl(LPCSTR lpszClassName,
   CDynDialogItemEx *pDynDialogItemEx = new CDynDialogItemEx;
   if (pDynDialogItemEx != NULL) {
     nRet = pDynDialogItemEx->InitDialogItem(lpszClassName, dwStyle, dwExtendedStyle, pRect, lpszCaption, nID, TRUE);
-    m_arrDlgItemPtr.Add(pDynDialogItemEx);
+    m_arrDlgItemPtr.push_back(pDynDialogItemEx);
     m_DialogTemplate.cdit++;
   }
 
@@ -546,7 +546,7 @@ void CDynDialogEx::OnOK()
   }
 }
 
-BOOL CDynDialogEx::OnCommand(WPARAM wParam, LPARAM lParam) 
+BOOL CDynDialogEx::OnCommand(WPARAM wParam, LPARAM lParam)
 {
   //wParam
   //The low-order word of wParam identifies the command ID of the menu item, control, or accelerator.
@@ -586,13 +586,13 @@ BOOL CDynDialogEx::OnCommand(WPARAM wParam, LPARAM lParam)
 afx_msg LRESULT CDynDialogEx::OnHelpMsg(WPARAM wParam, LPARAM lParam)
 {
   //lParam		<<-- Contains: (LPHELPINFO)lParam
-  // >> typedef  struct  tagHELPINFO { 
-  //     UINT     cbSize; 
-  //     int      iContextType 
-  //     int      iCtrlId; 
-  //     HANDLE   hItemHandle; 
-  //     DWORD    dwContextId; 
-  //     POINT    MousePos; 
+  // >> typedef  struct  tagHELPINFO {
+  //     UINT     cbSize;
+  //     int      iContextType
+  //     int      iCtrlId;
+  //     HANDLE   hItemHandle;
+  //     DWORD    dwContextId;
+  //     POINT    MousePos;
   // } HELPINFO, FAR *LPHELPINFO;
 
   //

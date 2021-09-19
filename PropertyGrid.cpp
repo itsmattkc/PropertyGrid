@@ -309,7 +309,7 @@ void CPropertyGrid::CItem::ValidateChanges()
 {
   // save the values
   m_undefined_old = m_undefined;
-  m_nValue_old = m_nValue;              
+  m_nValue_old = m_nValue;
   m_dValue_old = m_dValue;
   m_strValue_old = m_strValue;
   m_bValue_old = m_bValue;
@@ -1083,7 +1083,7 @@ void CPropertyGrid::OnPaint()
 
           // now draw text
           dcMem.SetTextColor(m_clrTitle);
-          dcMem.DrawText(it->m_title.c_str(), CRect(title_left+GetTextMargin(), title_top, w, title_top+m_line_height), DT_END_ELLIPSIS|DT_LEFT|DT_SINGLELINE|DT_VCENTER|DT_NOPREFIX); 
+          dcMem.DrawText(it->m_title.c_str(), CRect(title_left+GetTextMargin(), title_top, w, title_top+m_line_height), DT_END_ELLIPSIS|DT_LEFT|DT_SINGLELINE|DT_VCENTER|DT_NOPREFIX);
         }
 
         // next line
@@ -1317,7 +1317,7 @@ void CPropertyGrid::DrawItem(CDC& dc, int w, int x, int y, vector<CItem>::iterat
     case IT_FOLDER:
       {
         TCHAR szBuffer[1024];
-        strncpy_s(szBuffer, strValue.c_str(), 1024);
+        _tcsncpy(szBuffer, strValue.c_str(), 1024);
         PathCompactPath(dc.GetSafeHdc(), szBuffer, rcValue.Width());
         strValue = szBuffer;
         break;
@@ -2234,8 +2234,8 @@ void CPropertyGrid::EditFocusedItem()
       dlg.SetFont(&m_fntNormal);
       CString strValue = pItem->m_strValue.c_str();
       dlg.AddDlgControl("EDIT", pItem->m_strValue.c_str(), STYLE_EDIT|WS_VSCROLL|WS_HSCROLL|ES_AUTOHSCROLL|ES_AUTOVSCROLL|ES_LEFT|ES_MULTILINE|ES_WANTRETURN, EXSTYLE_EDIT, CRect(7, 7, 200, 100), (void*) &strValue);
-      dlg.AddDlgControl("BUTTON", m_strOk.c_str(), STYLE_BUTTON, EXSTYLE_BUTTON, CRect(56, 106, 106, 120), NULL, IDOK); 
-      dlg.AddDlgControl("BUTTON", m_strCancel.c_str(), STYLE_BUTTON, EXSTYLE_BUTTON, CRect(110, 106, 160, 120), NULL, IDCANCEL); 
+      dlg.AddDlgControl("BUTTON", m_strOk.c_str(), STYLE_BUTTON, EXSTYLE_BUTTON, CRect(56, 106, 106, 120), NULL, IDOK);
+      dlg.AddDlgControl("BUTTON", m_strCancel.c_str(), STYLE_BUTTON, EXSTYLE_BUTTON, CRect(110, 106, 160, 120), NULL, IDCANCEL);
       if (dlg.DoModal() == IDOK)
       {
         pItem->m_strValue = LPCTSTR(strValue);
@@ -2256,8 +2256,8 @@ void CPropertyGrid::EditFocusedItem()
       dlg.AddDlgControl("STATIC", m_strTime.c_str(), STYLE_STATIC, EXSTYLE_STATIC, CRect(67, 3, 120, 12));
       dlg.AddDlgControl("SysDateTimePick32", "", STYLE_DATETIMEPICKER|DTS_SHORTDATEFORMAT, EXSTYLE_DATETIMEPICKER, CRect(7, 13, 60, 26), (void*) &dtValueDate);
       dlg.AddDlgControl("SysDateTimePick32", "", STYLE_DATETIMEPICKER|DTS_TIMEFORMAT , EXSTYLE_DATETIMEPICKER, CRect(67, 13, 120, 26), (void*) &dtValueTime);
-      dlg.AddDlgControl("BUTTON", m_strOk.c_str(), STYLE_BUTTON, EXSTYLE_BUTTON, CRect(7, 37, 60, 51), NULL, IDOK); 
-      dlg.AddDlgControl("BUTTON", m_strCancel.c_str(), STYLE_BUTTON, EXSTYLE_BUTTON, CRect(67, 37, 120, 51), NULL, IDCANCEL); 
+      dlg.AddDlgControl("BUTTON", m_strOk.c_str(), STYLE_BUTTON, EXSTYLE_BUTTON, CRect(7, 37, 60, 51), NULL, IDOK);
+      dlg.AddDlgControl("BUTTON", m_strCancel.c_str(), STYLE_BUTTON, EXSTYLE_BUTTON, CRect(67, 37, 120, 51), NULL, IDCANCEL);
       if (dlg.DoModal() == IDOK)
       {
         pItem->m_dtValue.SetDateTime(dtValueDate.GetYear(), dtValueDate.GetMonth(), dtValueDate.GetDay(),

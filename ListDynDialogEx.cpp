@@ -42,14 +42,14 @@ BOOL CListDynDialogEx::OnInitDialog()
   return bRet;
 }
 
-INT_PTR CListDynDialogEx::DoModal()
+int CListDynDialogEx::DoModal()
 {
   CRect rect(7,7,150,150);
   AddDlgControl(_T("LISTBOX"), _T("ListboxText"), STYLE_LISTBOX, EXSTYLE_LISTBOX, &rect, &m_lstBox, IDC_LIST1);
   return CDynDialogEx::DoModal();
 }
 
-void CListDynDialogEx::OnDblclkList() 
+void CListDynDialogEx::OnDblclkList()
 {
   CString strBuf;
   int nIndex = m_lstBox.GetCurSel();

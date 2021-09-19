@@ -3,12 +3,12 @@
 
 #include "stdafx.h"
 #include "PropertyGridMonthCalCtrl.h"
-#include ".\propertygridmonthcalctrl.h"
 
 
 // CPropertyGridMonthCalCtrl
 
-IMPLEMENT_DYNAMIC(CPropertyGridMonthCalCtrl, CMonthCalCtrl)
+// DOWNGRADE: Commented out to prevent link error where CRuntimeStatic for CMonthCalCtrl is unresolved
+//IMPLEMENT_DYNAMIC(CPropertyGridMonthCalCtrl, CMonthCalCtrl)
 CPropertyGridMonthCalCtrl::CPropertyGridMonthCalCtrl()
 {
 }

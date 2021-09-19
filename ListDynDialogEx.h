@@ -11,7 +11,7 @@
 
 #include "dyndialogex.h"
 
-class CListDynDialogEx : public CDynDialogEx  
+class CListDynDialogEx : public CDynDialogEx
 {
 public:
   CListDynDialogEx(CWnd* pParent = NULL);
@@ -23,7 +23,7 @@ public:
   // ClassWizard generated virtual function overrides
   //{{AFX_VIRTUAL(CListDynDialogEx)
 public:
-  virtual INT_PTR DoModal();
+  virtual int DoModal();
   //}}AFX_VIRTUAL
 
   // Implementation

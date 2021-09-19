@@ -66,7 +66,7 @@ END_MESSAGE_MAP()
 BOOL CPropertyGridCombo::Create(DWORD dwStyle, CRect& rc, CWnd* pParent, int nId)
 {
   pParent->ClientToScreen(&rc);
-  BOOL ret = __super::CreateEx(0, AfxRegisterWndClass(CS_HREDRAW|CS_VREDRAW), "", dwStyle|WS_POPUP, rc, pParent->GetParent(), nId);
+  BOOL ret = CWnd::CreateEx(0, AfxRegisterWndClass(CS_HREDRAW|CS_VREDRAW), "", dwStyle|WS_POPUP, rc, pParent->GetParent(), nId);
   if (ret) SetOwner(pParent);
   return ret;
 }

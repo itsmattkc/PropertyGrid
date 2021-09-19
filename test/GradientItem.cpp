@@ -34,7 +34,7 @@ void CGradientItem::DrawItem(CDC& dc, CRect rc, bool focused)
   vert [0] .Alpha  = 0x0000;
 
   vert [1] .x      = rect.right;
-  vert [1] .y      = rect.bottom; 
+  vert [1] .y      = rect.bottom;
   vert [1] .Red    = GetRValue(m_clrRight)*256;
   vert [1] .Green  = GetGValue(m_clrRight)*256;
   vert [1] .Blue   = GetBValue(m_clrRight)*256;
@@ -42,7 +42,9 @@ void CGradientItem::DrawItem(CDC& dc, CRect rc, bool focused)
 
   gRect.UpperLeft  = 0;
   gRect.LowerRight = 1;
-  dc.GradientFill(vert,2,&gRect,1,GRADIENT_FILL_RECT_H);
+
+  // DOWNGRADE: Commented out because MFC 4.2 doesn't have GradientFill
+  //dc.GradientFill(vert,2,&gRect,1,GRADIENT_FILL_RECT_H);
 
   if (focused)
   {

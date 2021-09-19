@@ -6,7 +6,8 @@
 
 class CPropertyGridMonthCalCtrl : public CMonthCalCtrl
 {
-  DECLARE_DYNAMIC(CPropertyGridMonthCalCtrl)
+  // DOWNGRADE: Commented out to prevent link error where CRuntimeStatic for CMonthCalCtrl is unresolved
+  //DECLARE_DYNAMIC(CPropertyGridMonthCalCtrl)
 
 public:
   CPropertyGridMonthCalCtrl();

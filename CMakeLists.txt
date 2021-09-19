@@ -27,4 +27,6 @@ add_library(PropertyGrid STATIC
   stdafx.h
 )
 
+target_link_libraries(PropertyGrid PRIVATE shlwapi.lib)
+
 add_subdirectory(test)

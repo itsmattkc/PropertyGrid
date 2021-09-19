@@ -1,4 +1,4 @@
-# Fully customizable PropertyGrid
+# Fully customizable PropertyGrid for MFC 4.2
 
 Original project by Nicolas Bonamy at CodeProject: https://www.codeproject.com/Articles/18933/A-fully-customizable-PropertyGrid
 

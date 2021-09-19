@@ -7,6 +7,7 @@
 // DynDialogEx.h : header file
 //
 
+#include <VECTOR>
 #include "DynDialogItemEx.h"
 
 // Control styles
@@ -47,7 +48,7 @@
 #define  EXSTYLE_DATETIMEPICKER			(0)
 #define  EXSTYLE_TIMEPICKER				(0)
 
-#define ROWSTEPSIZE	 12 
+#define ROWSTEPSIZE	 12
 #define FIRSTROW1		 10
 #define FIRSTROW2		 37
 #define FIXEDCOL1		 10
@@ -101,7 +102,7 @@ public:
   WORD GetFontSize();
   void SetUseSystemButtons(BOOL bUse = TRUE);
   void SetUseModeless(BOOL bModelessDlg = TRUE);
-  long GetNumberOfConrols() {return long(m_arrDlgItemPtr.GetSize());}
+  long GetNumberOfConrols() {return long(m_arrDlgItemPtr.size());}
 
   //Additional functions by Tom Daffin
   void AddStyles(DWORD dwStyles);
@@ -111,7 +112,7 @@ public:
   // ClassWizard generated virtual function overrides
   //{{AFX_VIRTUAL(CDynDialogEx)
 public:
-  virtual INT_PTR DoModal();
+  virtual int DoModal();
 protected:
   virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
   virtual void OnCancel();
@@ -131,7 +132,9 @@ protected:
   BOOL m_bModelessDlg;
 
   DLGTEMPLATE m_DialogTemplate;
-  CArray<CDynDialogItemEx*, CDynDialogItemEx*>	m_arrDlgItemPtr;
+
+  // DOWNGRADE: Switch from CArray to std::vector because MFC 4.2 doesn't have CArray
+  std::vector<CDynDialogItemEx*>	m_arrDlgItemPtr;
 
   // Implementation
 protected:

@@ -190,7 +190,8 @@ protected:
     void ValidateChanges();
   };
 
-  friend bool item_alpha_sort(vector<CPropertyGrid::CItem>::iterator it1, vector<CPropertyGrid::CItem>::iterator it2);
+  // DOWNGRADE: Commented out to prevent "undefined identifier CPropertyGrid" error
+  //friend bool item_alpha_sort(vector<CPropertyGrid::CItem>::iterator it1, vector<CPropertyGrid::CItem>::iterator it2);
 
   class CSection
   {
