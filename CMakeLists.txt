@@ -5,6 +5,8 @@ project(PropertyGrid LANGUAGES CXX)
 set(CMAKE_MFC_FLAG 2)
 add_compile_definitions(_AFXDLL)
 
+option(BUILD_APP "Build with test application" ON)
+
 add_library(PropertyGrid STATIC
   CustomItem.h
   DynDialogEx.cpp
@@ -29,4 +31,6 @@ add_library(PropertyGrid STATIC
 
 target_link_libraries(PropertyGrid PRIVATE shlwapi.lib)
 
-add_subdirectory(test)
+if (BUILD_APP)
+  add_subdirectory(test)
+endif()
