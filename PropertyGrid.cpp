@@ -832,7 +832,7 @@ void CPropertyGrid::InitControl()
     }
     else
     {
-      m_fntNormal.CreatePointFont(85, "Tahoma");
+      m_fntNormal.CreateStockObject(DEFAULT_GUI_FONT);
       m_fntNormal.GetLogFont(&lf);
       lf.lfWeight = FW_BOLD;
       m_fntBold.CreateFontIndirect(&lf);
