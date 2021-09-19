@@ -31,6 +31,6 @@ add_library(PropertyGrid STATIC
 
 target_link_libraries(PropertyGrid PRIVATE shlwapi.lib)
 
-if (BUILD_APP)
+if (PROPERTYGRID_BUILD_APP)
   add_subdirectory(test)
 endif()
