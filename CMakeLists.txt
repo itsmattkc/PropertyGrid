@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(Rebuilder LANGUAGES CXX)
+project(PropertyGrid LANGUAGES CXX)
 
 set(CMAKE_MFC_FLAG 2)
 add_compile_definitions(_AFXDLL)
