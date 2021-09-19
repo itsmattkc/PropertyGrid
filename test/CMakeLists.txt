@@ -19,5 +19,5 @@ add_executable(PropGrid WIN32
   TreeItem.h
 )
 
-target_include_directories(PropGrid PRIVATE ${CMAKE_SOURCE_DIR})
+target_include_directories(PropGrid PRIVATE "..")
 target_link_libraries(PropGrid PRIVATE PropertyGrid)
