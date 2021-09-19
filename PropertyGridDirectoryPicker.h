@@ -18,8 +18,8 @@ public:
   CPropertyGridDirectoryPicker();
   virtual ~CPropertyGridDirectoryPicker();
 
-  static bool PickDirectory(string&, HWND hwnd);
-  static string m_strTitle;
+  static bool PickDirectory(std::string&, HWND hwnd);
+  static std::string m_strTitle;
 
 protected:
   static int CALLBACK BrowseCallbackProc(HWND hwnd,UINT uMsg,LPARAM lp, LPARAM pData);

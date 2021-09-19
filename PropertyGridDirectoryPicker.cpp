@@ -11,7 +11,7 @@
 
 #define BIF_NEWDIALOGSTYLE 0x0040
 
-string CPropertyGridDirectoryPicker::m_strTitle = "Choose a directory";
+std::string CPropertyGridDirectoryPicker::m_strTitle = "Choose a directory";
 
 CPropertyGridDirectoryPicker::CPropertyGridDirectoryPicker()
 {
@@ -36,7 +36,7 @@ int CALLBACK CPropertyGridDirectoryPicker::BrowseCallbackProc(HWND hwnd,UINT uMs
   return 0;
 }
 
-bool CPropertyGridDirectoryPicker::PickDirectory(string &directory, HWND hwnd)
+bool CPropertyGridDirectoryPicker::PickDirectory(std::string &directory, HWND hwnd)
 {
   char pszBuffer[MAX_PATH];
   pszBuffer[0] = '\0';
