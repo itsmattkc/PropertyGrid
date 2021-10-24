@@ -666,6 +666,14 @@ bool CPropertyGrid::SetItemValue(HITEM item, const string strValue)
     Invalidate();
     return true;
   }
+  else if (pItem->m_type == IT_COMBO)
+  {
+    for (size_t i=0; i<pItem->m_options.size(); i++) {
+      if (pItem->m_options.at(i) == strValue) {
+        return SetItemValue(item, (int) i);
+      }
+    }
+  }
   return false;
 }
 
